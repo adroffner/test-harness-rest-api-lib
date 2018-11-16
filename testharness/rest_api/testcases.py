@@ -6,7 +6,7 @@ Use these unittest.TestCase subclasses to run REST API tests.
 import logging
 import unittest
 
-from .client.live import RestApiClient
+from .clients.live import RestApiClient
 
 log = logging.getLogger(__name__)
 

@@ -31,8 +31,8 @@ class RestApiClient(BaseRestApiClient):
         """
 
         full_url = self.delete_url(rest_url, object_key)
-        resp = requests.get(full_url, headers=self._add_rest_headers(),
-                            timeout=self.response_timeout)
+        resp = requests.delete(full_url, headers=self._add_rest_headers(),
+                               timeout=self.response_timeout)
         return resp
 
     def get(self, rest_url, query={}):

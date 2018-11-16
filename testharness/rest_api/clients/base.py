@@ -72,7 +72,7 @@ class BaseRestApiClient(object):
         :returns: DELETE endpoint URL
         """
 
-        full_url = self._get_full_url(rest_url, extra_path=['/', object_key])
+        full_url = self._get_full_url(rest_url, extra_path=['/', repr(object_key)])
         log.debug('Client DELETE {}'.format(full_url))
 
         return full_url
@@ -86,8 +86,9 @@ class BaseRestApiClient(object):
         """
 
         full_url = self._get_full_url(rest_url)
-        query_string = urlencode(query)
-        full_url = '?'.join([full_url, query_string])
+        if isinstance(query, dict) and query:
+            query_string = urlencode(query)
+            full_url = '?'.join([full_url, query_string])
         log.debug('Client GET {}'.format(full_url))
 
         return full_url
