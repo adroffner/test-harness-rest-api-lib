@@ -9,7 +9,6 @@ try:
 except ImportError:
     app = None
     HAS_FLASK = False
-    raise
 
 
 @skipIf(not HAS_FLASK, 'Flask REST API test require flask')
