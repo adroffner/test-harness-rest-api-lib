@@ -72,8 +72,8 @@ class FlaskTestingRestApiClient(BaseRestApiClient):
         returns: an HTTP response
         """
 
-        full_url = self.post_url(rest_url, payload_dict)
-        return self.test_client.post(full_url, data=payload_dict,
+        (full_url, payload_dict) = self.post_url(rest_url, payload_dict)
+        return self.test_client.post(full_url, json=payload_dict,
                                      headers=self._add_rest_headers())
 
 
